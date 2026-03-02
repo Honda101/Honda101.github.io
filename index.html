@@ -5,109 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dustin Meyer - Data Analyst Portfolio</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: #f4f4f4;
-        }
-
+        /* --- CORE STYLES --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; background: #f4f4f4; }
+        
         header {
-    position: relative;
-    background-image: url('images/Portfolio_header.png');
-    background-size: cover;      /* fills the header */
-    background-position: center; /* keeps the chart centered */
-    color: white;
-    padding: 5rem 2rem;          /* increase vertical padding if needed */
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-/* Dark overlay */
-header::before {
-    content: "";                 /* required for pseudo-element */
-    position: absolute;          /* overlay spans entire header */
-    inset: 0;                    /* top:0; right:0; bottom:0; left:0; */
-    background: rgba(0,0,0,0.4); /* semi-transparent black overlay */
-    z-index: 1;                  /* sits above image but below text */
-}
-
-
-header h1,
-header p {
-    color: #ffffff; /* pure white text */
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); /* subtle black shadow for readability */
-    position: relative; /* ensures text sits above the overlay */
-    z-index: 2; /* above the ::before overlay */
-}
-
-
-header p {
-    color: #ffffff; /* pure white */
-    text-shadow: 0 1.5px 4px rgba(0, 0, 0, 0.5); /* slightly softer shadow than header */
-    position: relative;
-    z-index: 2;
-    font-size: 1.25rem; /* adjust as needed */
-    font-weight: 600;   /* slightly bold for readability */
-}
-
-
-        nav {
-            background: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #667eea;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #764ba2;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        section {
-            background: white;
-            margin: 2rem 0;
-            padding: 2rem;
-            border-radius: 10px;
+            position: relative;
+            background-image: url('images/portfolio_header_viz_clean.png');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 5rem 2rem;
+            text-align: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        h2 {
-            color: #667eea;
-            margin-bottom: 1.5rem;
-            font-size: 2rem;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 0.5rem;
+        header::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
         }
 
+        header h1, header p { color: #ffffff; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6); position: relative; z-index: 2; }
+        header p { font-size: 1.25rem; font-weight: 600; }
+
+        nav { background: white; padding: 1rem 2rem; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 100; }
+        nav ul { list-style: none; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        nav a { text-decoration: none; color: #667eea; font-weight: 600; transition: color 0.3s; }
+        nav a:hover { color: #764ba2; }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+
+        section { background: white; margin: 2rem 0; padding: 2rem; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #667eea; margin-bottom: 1.5rem; font-size: 2rem; border-bottom: 3px solid #667eea; padding-bottom: 0.5rem; }
+
+        /* --- SKILLS GRID --- */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -122,174 +56,40 @@ header p {
             border-left: 4px solid #667eea;
         }
 
-        .skill-category h3 {
-            color: #764ba2;
-            margin-bottom: 1rem;
-        }
+        .skill-category h3 { color: #764ba2; margin-bottom: 1rem; }
+        .skill-category ul { list-style: none; }
+        .skill-category li { padding: 0.4rem 0; color: #555; }
+        .skill-category li:before { content: "▸ "; color: #667eea; font-weight: bold; }
 
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.4rem 0;
-            color: #555;
-        }
-
-        .skill-category li:before {
-            content: "▸ ";
-            color: #667eea;
-            font-weight: bold;
-        }
-
-        .projects-grid {
+        /* --- CASE STUDY STYLING --- */
+        .project-showcase { display: grid; grid-template-columns: 1fr; gap: 4rem; margin-top: 2rem; }
+        .case-study-card {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .project-card {
-            background: #f8f9fa;
-            border-radius: 10px;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 12px;
             overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 2px solid #e0e0e0;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
-        }
-
-        .project-image {
-    width: 100%;
-    height: 200px;
-    overflow: hidden;
-    background: #f0f0f0;
-}
-
-.project-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-
-        .project-content {
             padding: 1.5rem;
+            transition: 0.3s;
         }
+        .case-study-card:hover { box-shadow: 0 10px 30px rgba(102, 126, 234, 0.15); }
+        .case-study-image img { width: 100%; height: auto; border-radius: 8px; border: 1px solid #ddd; }
+        .case-study-content h3 { color: #764ba2; font-size: 1.5rem; margin-bottom: 1rem; }
+        .details-box { background: #f8f9fa; padding: 1rem; border-radius: 8px; font-size: 0.95rem; border-left: 4px solid #667eea; margin-top: 1rem; }
+        .tag { background: #667eea; color: white; padding: 0.2rem 0.6rem; border-radius: 15px; font-size: 0.8rem; margin-right: 5px; }
 
-        .project-content h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
+        /* --- CONTACT SECTION --- */
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+        .contact-item { background: #f8f9fa; padding: 1.5rem; border-radius: 8px; text-align: center; border: 1px solid #eee; transition: 0.3s; }
+        .contact-item:hover { border-color: #667eea; transform: translateY(-3px); }
+        .contact-item h3 { color: #667eea; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .contact-item a { color: #764ba2; text-decoration: none; font-weight: 600; word-break: break-all; }
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1rem;
-        }
-
-        .tag {
-            background: #667eea;
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-
-        .project-links {
-            margin-top: 1rem;
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background: #667eea;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
-            font-weight: 600;
-        }
-
-        .btn:hover {
-            background: #764ba2;
-        }
-
-        .btn-secondary {
-            background: #6c757d;
-        }
-
-        .btn-secondary:hover {
-            background: #5a6268;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .contact-item {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .contact-item h3 {
-            color: #667eea;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-item a {
-            color: #764ba2;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .dashboard-embed {
-            width: 100%;
-            height: 600px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            margin-top: 1rem;
-            background: #f8f9fa;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #999;
-            font-style: italic;
-        }
-
-        footer {
-            background: #333;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 1.8rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-        }
+        @media (max-width: 900px) { .case-study-card { grid-template-columns: 1fr; } }
+        
+        footer { background: #333; color: white; text-align: center; padding: 2rem; margin-top: 3rem; }
     </style>
 </head>
 <body>
@@ -304,53 +104,55 @@ header p {
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li><a href="#education">Education</a></li>
         </ul>
     </nav>
 
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
-            <p>Senior analytics and data management professional with 7+ years of experience delivering data-driven strategy, enterprise reporting frameworks, and modern data platform solutions. Skilled in research-driven analysis, data architecture, data governance, and thought leadership. Adept at transforming complex technical and market trends into clear, actionable insights for executives and clients. Known for strong storytelling, excellent communication, and the ability to synthesize emerging technologies such as AI/GenAI, data lakehouses, and modern data stack into pragmatic guidance.</p>
-            <p style="margin-top: 1rem;">I specialize in building interactive dashboards, automating data pipelines, and creating predictive models that help organizations make data-driven decisions with confidence.</p>
+            <p>Senior analytics and data management professional with 7+ years of experience delivering data-driven strategy, enterprise reporting frameworks, and modern data platform solutions. Skilled in research-driven analysis, data architecture, data governance, and thought leadership. Adept at transforming complex technical and market trends into clear, actionable insights for executives and clients. Known for strong storytelling, excellent communication, and the ability to synthesize emerging technologies such as AI/GenAI, data lakehouses, and modern data stack into pragmatic guidance.
+
+                I specialize in building interactive dashboards, automating data pipelines, and creating predictive models that help organizations make data-driven decisions with confidence.</p>
         </section>
 
         <section id="skills">
             <h2>Technical Skills</h2>
             <div class="skills-grid">
                 <div class="skill-category">
-                    <h3>Programming & Analysis</h3>
+                    <h3>Programming & SQL</h3>
                     <ul>
-                        <li>Python (Pandas, NumPy, Scikit-learn, Airflow, SQLAlchemy)</li>
-                        <li>Amazon Q, AI Prompt Engineering</li>
-                        <li>SQL</li>
-                        <li>Statistical Analysis</li>
+                        <li>Python (Pandas, SQLAlchemy)</li>
+                        <li>Snowflake SQL</li>
+                        <li>ETL Pipeline Automation</li>
+                        <li>API Data Ingestion</li>
                     </ul>
                 </div>
                 <div class="skill-category">
-                    <h3>Visualization Tools</h3>
+                    <h3>Visualization</h3>
                     <ul>
-                        <li>Tableau</li>
+                        <li>Looker Studio</li>
+                        <li>Tableau Public</li>
                         <li>Power BI</li>
-                        <li>Plotly & Dash</li>
-                        <li>Matplotlib & Seaborn</li>
+                        <li>Data Storytelling</li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Data Engineering</h3>
                     <ul>
-                        <li>ETL Pipelines</li>
-                        <li>Apache Spark</li>
-                        <li>APIs & Web Scraping</li>
-                        <li>Cloud Platforms (AWS, Snowflake)</li>
+                        <li>Snowflake Data Cloud</li>
+                        <li>Cloud Data Warehousing</li>
+                        <li>Data Modeling (Star Schema)</li>
+                        <li>Version Control (Git/GitHub)</li>
                     </ul>
                 </div>
                 <div class="skill-category">
                     <h3>Business Intelligence</h3>
                     <ul>
-                        <li>A/B Testing</li>
-                        <li>Predictive Modeling</li>
                         <li>KPI Development</li>
-                        <li>Stakeholder & Executive Reporting</li>
+                        <li>ROI Analysis</li>
+                        <li>Stakeholder Reporting</li>
+                        <li>Predictive Analytics</li>
                     </ul>
                 </div>
             </div>
@@ -358,77 +160,203 @@ header p {
 
         <section id="projects">
             <h2>Featured Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/USOilDashboardImage.png" alt="US Oil Production Dashboard">
+            <div class="project-showcase">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <a href="https://public.tableau.com/views/USOilHeatmaps/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" style="text-decoration: none;">
+                            <div class="image-container">
+                                <img src="images/Oil_Dashbaord_Tall_Final.png" alt="Oil Production Dashboard">
+                                <div class="hover-overlay">View Live Dashboard ↗</div>
+                            </div>
+                        </a>
                     </div>
-                    
-                    <div class="project-content">
-                        <h3>Oil Production Dashboard</h3>
-                        <p>Interactive Tableau dashboard analyzing 20 years of US oil production by company and production types.</p>
-                        <div class="project-tags">
-                            <span class="tag">Tableau</span>
+                
+                    <div class="case-study-content">
+                        <h3>US Oil Production Analysis</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="tag">SQL</span>
                             <span class="tag">Python</span>
-                            <span class="tag">Data Storytelling</span>
+                            <span class="tag">Tableau</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://public.tableau.com/views/USOilHeatmaps/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="btn">View Dashboard</a>
+                        
+                        <p>A case study on beautiful dashboard design while proving great detail at a glance.</p>
+                        
+                        <div class="details-box">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Engineered an end-to-end analytics pipeline by extracting and cleaning 20 years of historical production data from [Website Name/Industry Source] to visualize long-term output trends across the global energy sector.</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Developed a multi-tier comparative framework that segments performance by "Global Giants," "Large US Public," and "Private US" firms, allowing stakeholders to benchmark production volatility across different corporate structures.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Designed a high-impact monthly production heatmap to identify seasonal output patterns and historical anomalies, utilizing advanced UI/UX principles in Tableau to maintain clarity across dense, multi-company datasets.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/SurvivorHexMapScreenShot.png" alt="Survivor HexMap Dashboard">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <a href="https://public.tableau.com/views/RVOHealth_TestViz/UserProfile?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" style="text-decoration: none;">
+                            <div class="image-container">
+                                <img src="images/Website_Traffic_Dashboard_Final.png" alt="Oil Production Dashboard">
+                                <div class="hover-overlay">View Live Dashboard ↗</div>
+                            </div>
+                        </a>
                     </div>
-                    
-                    <div class="project-content">
-                        <h3>Survivor Hexmap</h3>
-                        <p>Interactive Tableau dashboard providing an intuitive HexMap to visualize data in an interesting way.</p>
-                        <div class="project-tags">
-                            <span class="tag">Tableau</span>
+                
+                    <div class="case-study-content">
+                        <h3>Website Traffic Analysis</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="tag">SQL</span>
                             <span class="tag">Python</span>
-                            <span class="tag">Data Visualization</span>
+                            <span class="tag">Tableau</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://public.tableau.com/views/SurvivorHexMap/Dashboard1?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" class="btn">View Dashboard</a>
+                        
+                        <p>Turning complex datasets into visually stunning, actionable insights that drive business growth.</p>
+                        
+                        <div class="details-box">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Analyzed multi-channel acquisition patterns to identify high-converting traffic sources, providing actionable insights into user behavior and navigation paths.</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Engineered a retention-focused reporting suite to track return customer rates, utilizing cohort analysis to pinpoint the primary drivers of repeat site visits.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Developed interactive KPIs for session duration and bounce rates, allowing stakeholders to visualize the direct correlation between content engagement and user loyalty.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <div class="project-card">
-                    <div class="project-image">
-                        <img src="images/PowerBI Portfolio Pic.JPG" alt="Power BI Dashboard">
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <a href="https://lookerstudio.google.com/reporting/9e326c6b-b877-43ae-b1d5-f33d3c5820e8" target="_blank" style="text-decoration: none;">
+                            <div class="image-container">
+                                <img src="images/Subscription_Dashboard_Final.png" alt="Oil Production Dashboard">
+                                <div class="hover-overlay">View Live Dashboard ↗</div>
+                            </div>
+                        </a>
                     </div>
-                    <div class="project-content">
-                        <h3>Power BI Dashboard</h3>
-                        <p>Comprehensive analysis of sales data, featuring automated reporting and visualization.</p>
-                        <div class="project-tags">
+                
+                    <div class="case-study-content">
+                        <h3>Automated Subscription Intelligence Platform</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="tag">SQL</span>
                             <span class="tag">Python</span>
+                            <span class="tag">Tableau</span>
+                        </div>
+                        
+                        <p>Architected a scalable data pipeline to transform raw subscription logs into real-time executive insights for recurring revenue growth.</p>
+                        
+                        <div class="details-box">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Engineered an automated ETL pipeline using Python and Snowflake to ingest, clean, and model high-volume subscription data, reducing manual reporting overhead by 100%.</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Developed a centralized Looker Semantic Layer to define standardized business logic for Monthly Recurring Revenue (MRR), churn rates, and customer lifetime value (LTV).</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Created dynamic executive dashboards that identify high-risk churn segments and expansion opportunities, enabling data-driven retention strategies across the organization.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <a href="https://public.tableau.com/views/HooniganTransformationOfficeLiquidityModel-POC/HooniganGroup?:language=en-US&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link" target="_blank" style="text-decoration: none;">
+                            <div class="image-container">
+                                <img src="images/Hoonigan_Dashboard_Final.png" alt="Oil Production Dashboard">
+                                <div class="hover-overlay">View Live Dashboard ↗</div>
+                            </div>
+                        </a>
+                    </div>
+                
+                    <div class="case-study-content">
+                        <h3>Integrated Commerce & Operations Intelligence Hub</h3>
+                        <div style="margin-bottom: 1rem;">
+                            <span class="tag">SQL</span>
+                            <span class="tag">Python</span>
+                            <span class="tag">Tableau</span>
+                        </div>
+                        
+                        <p>Optimizing the intersection of high-growth e-commerce sales and large-scale inventory logistics to drive enterprise-wide operational efficiency.</p>
+                        
+                        <div class="details-box">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Synthesized dual-stream data architectures to provide a unified view of Hoonigan’s front-end retail performance alongside Wheel Pros’ backend inventory levels.</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Engineered an Efficiency vs. Growth analytical model that correlates real-time SKU velocity with stock-on-hand, identifying optimal reorder points to prevent stockouts during peak promotional cycles.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Developed a cross-functional executive suite that visualizes fulfillment bottlenecks and warehouse turnaround times, directly impacting bottom-line profitability through reduced overhead.</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="case-study-card">
+                    <div class="case-study-image">
+                        <div class="image-container-static">
+                            <img src="images/Superstore_Business_Dashboard_PBI_Final.png" alt="Power BI Sales Analysis">
+                            </div>
+                    </div>
+                
+                    <div class="case-study-content">
+                        <h3>Sales Performance Analytics</h3>
+                        <div style="margin-bottom: 1rem;">
                             <span class="tag">Power BI</span>
-                            <span class="tag">Insights</span>
+                            <span class="tag">DAX</span>
+                            <span class="tag">SQL</span>
                         </div>
-                        <div class="project-links">
-                            <a href="https://github.com/Honda101/Honda101.github.io/blob/8b6905a6ce916345905a851716f85cec8e5a3101/PowerBI%20Portfolio%20Pic.JPG" class="btn">GitHub</a>
+                        
+                        <p>A comprehensive Power BI suite developed to track regional sales quotas and year-over-year growth metrics.</p>
+                        
+                        <div class="details-box">
+                            <ul style="list-style: none; padding-left: 0;">
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Analyzed historical sales data to identify seasonal trends and underperforming territories.</span>
+                                </li>
+                                <li style="margin-bottom: 10px; display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Developed custom DAX measures for Rolling 12-Month Revenue and Variance to Budget.</span>
+                                </li>
+                                <li style="display: flex; align-items: flex-start;">
+                                    <span style="color: #667eea; margin-right: 12px; font-weight: bold;">•</span>
+                                    <span>Delivered automated weekly snapshots to sales leadership, replacing manual Excel trackers.</span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!-- <div style="margin-top: 3rem;">
-                <h3 style="color: #764ba2; margin-bottom: 1rem;">Sample Dashboard Embed</h3>
-                <p style="margin-bottom: 1rem;">Below is an example of how you can embed your live Tableau/Power BI dashboards:</p>
-                <div class='tableauPlaceholder' id='viz1766426579596' style='width: 100%; max-width: 1200px; height: 827px; margin: 0 auto;'><noscript><a href='#'><img alt='Dashboard 1 ' src='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;US&#47;USOilHeatmaps&#47;Dashboard1&#47;1_rss.png' style='border: none' /></a></noscript><object class='tableauViz'  style='display:none;'><param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' /> <param name='embed_code_version' value='3' /> <param name='site_root' value='' /><param name='name' value='USOilHeatmaps&#47;Dashboard1' /><param name='tabs' value='no' /><param name='toolbar' value='yes' /><param name='static_image' value='https:&#47;&#47;public.tableau.com&#47;static&#47;images&#47;US&#47;USOilHeatmaps&#47;Dashboard1&#47;1.png' /> <param name='animate_transition' value='yes' /><param name='display_static_image' value='yes' /><param name='display_spinner' value='yes' /><param name='display_overlay' value='yes' /><param name='display_count' value='yes' /><param name='language' value='en-US' /></object></div>                <script type='text/javascript'>                    var divElement = document.getElementById('viz1766426579596');                    var vizElement = divElement.getElementsByTagName('object')[0];                    if ( divElement.offsetWidth > 800 ) { vizElement.style.width='100%';vizElement.style.height='2427px';} else if ( divElement.offsetWidth > 500 ) { vizElement.style.width='100%';vizElement.style.height='2427px';} else { vizElement.style.width='100%';vizElement.style.height='6427px';}                     var scriptElement = document.createElement('script');                    scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';                    vizElement.parentNode.insertBefore(scriptElement, vizElement);                </script>
-            </div>
-        </section> -->
+        </section>
 
         <section id="contact">
             <h2>Get In Touch</h2>
-            <p>I'm actively seeking opportunities to join a data-driven organization where I can 
-                contribute my analytical expertise, create impactful visualizations, and help teams 
-                make informed decisions. If you're looking for someone who's passionate about 
-                uncovering insights and driving results, let's connect!</p>
             <div class="contact-grid">
                 <div class="contact-item">
                     <h3>📧 Email</h3>
@@ -436,22 +364,43 @@ header p {
                 </div>
                 <div class="contact-item">
                     <h3>💼 LinkedIn</h3>
-                    <a href="https://linkedin.com/in/dustinmeyer" target="_blank">linkedin.com/in/dustinmeyer</a>
+                    <a href="https://linkedin.com/in/dustinmeyer" target="_blank">View Profile</a>
                 </div>
                 <div class="contact-item">
                     <h3>💻 GitHub</h3>
-                    <a href="https://github.com/Honda101/Honda101.github.io" target="_blank">github link</a>
+                    <a href="https://github.com/Honda101" target="_blank">View Code</a>
                 </div>
-                <div class="contact-item">
-                    <h3>📊 Tableau Public</h3>
-                    <a href="https://public.tableau.com/app/profile/dustin.meyer6674/vizzes" target="_blank">View My Dashboards</a>
+            </div>
+        </section>
+
+        <section id="education" style="margin-top: 5rem; border-top: 2px solid #667eea; padding-top: 3rem;">
+            <h2 style="color: #667eea; margin-bottom: 2rem;">Education</h2>
+            
+            <div class="education-container" style="display: flex; flex-direction: column; gap: 2rem;">
+                
+                <div style="border-left: 4px solid #764ba2; padding-left: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                        <h3 style="margin: 0; color: #333;">Master of Business Administration (MBA)</h3>
+                        <span style="color: #667eea; font-weight: bold;">Expected Dec 2027</span>
+                    </div>
+                    <p style="margin: 5px 0; font-weight: 600; color: #555;">Colorado State University</p>
+                    <p style="color: #666; font-style: italic;">Emphasis in Business Intelligence & Data Analytics</p>
                 </div>
+        
+                <div style="border-left: 4px solid #ddd; padding-left: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+                        <h3 style="margin: 0; color: #333; font-size: 1.1rem;">Bachelor of Science in Business</h3>
+                        <span style="color: #999;">Graduated 2016</span>
+                    </div>
+                    <p style="margin: 5px 0; font-weight: 600; color: #555;">University of Northern Colorado</p>
+                </div>
+        
             </div>
         </section>
     </div>
 
     <footer>
-        <p>&copy; 2025 Dustin Meyer. Built with passion for data.</p>
+        <p>&copy; 2026 Dustin Meyer. Built with passion for data.</p>
     </footer>
 </body>
 </html>
